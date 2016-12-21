@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace KaizenSales\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use KaizenSales\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -13,7 +13,7 @@ class LoginController extends Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
+    | redirecting them to your template screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
     */
@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/template';
 
     /**
      * Create a new controller instance.

@@ -12,5 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+Route::get('/search/products/', 'SearchController@autocomplete');
+
+Route::get('/get/products/', 'SearchController@getAllProducts');
+
+Route::get('/sales', function () {
+    return view('sales');
 });

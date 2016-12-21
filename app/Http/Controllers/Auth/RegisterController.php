@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace KaizenSales\Http\Controllers\Auth;
 
-use App\User;
+use KaizenSales\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use KaizenSales\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/template';
 
     /**
      * Create a new controller instance.
