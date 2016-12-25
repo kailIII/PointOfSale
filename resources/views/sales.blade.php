@@ -96,11 +96,11 @@
                     <div class="wide column">
                         <h1>Cuenta:</h1>
                         <div class="ui four column grid aligned stackable">
-                            <div class="row">
+                            <form class="row" ng-submit="addProduct()">
                                 <div class="column">
                                     <div class="big ui search">
                                         <div class="ui fluid icon input">
-                                            <input class="prompt" type="text" placeholder="Buscar producto..." id="test" ng-model="product.name">
+                                            <input class="prompt" type="text" placeholder="Buscar producto..." id="product" name="word" ng-model="product.name" required>
                                             <i class="search icon"></i>
                                         </div>
                                         <div class="results"></div>
@@ -108,19 +108,19 @@
                                 </div>
                                 <div class="column">
                                     <div class="big ui fluid right labeled input">
-                                        <input type="number" placeholder="Cantidad..." ng-model="product.quantify">
+                                        <input type="number" min="1" placeholder="Cantidad..." ng-model="product.quantify" required>
                                         <div class="ui basic label">
                                             Unidades
                                         </div>
                                     </div>
                                 </div>
                                 <div class="column">
-                                    <button class="big ui fluid orange button" ng-click="addProduct()">
+                                    <button type="submit" class="big ui fluid orange button">
                                         <i class="add circle icon"></i>
                                         Agregar
                                     </button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -131,23 +131,38 @@
                         <table class="ui inverted table celled structured">
                             <thead>
                                 <tr>
+                                    <th class="center aligned">No</th>
+                                    <th class="center aligned">ID</th>
                                     <th class="center aligned">Nombre</th>
+                                    <th class="center aligned">Precio</th>
                                     <th class="center aligned">Cantidad</th>
                                     <th class="center aligned">Subtotal</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>John</td>
-                                    <td>Approved</td>
-                                    <td>None</td>
+                                <tr ng-repeat="order in orders track by $index">
+                                    <td>@{{order.id}}</td>
+                                    <td>@{{order.idProduct}}</td>
+                                    <td>@{{order.name}}</td>
+                                    <td>@{{order.price}}</td>
+                                    <td>@{{order.quantify}}</td>
+                                    <td>@{{order.subtotal}}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th>3 People</th>
-                                <th>2 Approved</th>
+                                <th>
+                                    <ng-pluralize count="orders.length" when=
+                                        "{'0': 'No hay ordenes.',
+                                         'one': '1 orden.',
+                                         'other': '@{{orders.length}} ordenes.'}">
+                                    </ng-pluralize>
+                                </th>
                                 <th></th>
+                                <th></th>
+                                <th></th>
+                                <th class="right aligned"><h2>Total:</h2></th>
+                                <th class="center aligned"><h2>@{{total}}</h2></th>
                             </tr>
                             </tfoot>
                         </table>

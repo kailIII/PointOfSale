@@ -7,7 +7,7 @@
 |
 | This file is where you may define all of the routes that are handled
 | by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
+| to using a Closure or controller method. Build add great!
 |
 */
 
@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/search/products/', 'SearchController@autocomplete');
-
-Route::get('/get/products/', 'SearchController@getAllProducts');
+Route::get('/search/products/{word}', 'SearchController@autocomplete');
 
 Route::get('/sales', function () {
     return view('sales');

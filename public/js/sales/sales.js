@@ -1,65 +1,85 @@
-$(document).ready(function() {
+
+var app = angular.module('salesApp', []);
+
+app.controller('SalesController', function ($scope, $http) {
+
+    $scope.orders = [];
+    $scope.registeredProducts = [];
+    $scope.product = {};
+
+    $scope.counter = 0;
+    $scope.total = 0;
 
     $('.ui.search').search({
         apiSettings: {
-            url: '/search/products/'
+            url: '/search/products/{query}',
+            /*
+            beforeSend: function(settings) {
+                settings.urlData = {
+                    value: $('#product').val()
+                };
+
+                return settings;
+            }
+            */
         },
         fields: {
             results : 'products',
             title   : 'name',
             url     : 'html_url'
         },
-        minCharacters : 2,
-        onSelect: function(result, response) {
-            console.log($("#test").val());
-            console.warn(result, 'result');
-        },
+        minCharacters : 1,
+        onSelect: function(product, response) {
+            $scope.product = product;
+            $scope.registeredProducts.push(product.name);
+        }
     });
-
-});
-
-var kaizenApp = angular.module('salesApp', []);
-
-kaizenApp.controller('SalesController', function ($scope, $http) {
-
-    // $scope.items = [];
-    //
-    // $http.get('/get/products/').then(function(data) {
-    //     $scope.items = data.data;
-    //
-    //     console.log($scope.items);
-    // });
-
-    $scope.counter = 1;
-
-    $scope.orders = [];
 
     $scope.addProduct = function() {
 
-        var productItem = {
-            id : $scope.counter,
-            name : $scope.product.name,
-            price : $scope.product.price,
-            quantify : $scope.product.quantify
-        };
+        console.log("Precio = " + $scope.product.price);
 
-        $scope.orders.push(productItem);
+        if (!isNaN($scope.product.price)) {
 
-        console.log($scope.orders);
+            if ($scope.registeredProducts.indexOf($scope.product.name) > -1) {
 
-        $scope.counter = $scope.orders.length;
+                var order = {
+                    id: ($scope.counter + 1),
+                    idProduct: $scope.product.id,
+                    name : $scope.product.name,
+                    price : $scope.product.price,
+                    quantify : $scope.product.quantify,
+                    subtotal: $scope.product.price * $scope.product.quantify
+                };
+
+                $scope.orders.push(order);
+                $scope.totalize();
+
+                $scope.counter = $scope.orders.length;
+
+                $scope.product = {};
+
+                console.log($scope.total);
+
+            } else {
+                alert("Por favor introduzca un producto válido");
+            }
+
+        } else {
+            alert("Por favor introduzca un producto válido");
+        }
 
     };
 
-    $scope.getTotal = function() {
+    $scope.totalize = function() {
 
-        var total = 0;
+        $scope.total = 0;
 
         $scope.orders.forEach(function(order) {
-            total += order.price * order.quantify;
+            $scope.total += order.subtotal;
         });
 
-        return total;
     };
+
 
 });
