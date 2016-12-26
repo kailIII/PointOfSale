@@ -95,7 +95,7 @@
                 <div class="row">
                     <div class="wide column">
                         <h1>Cuenta:</h1>
-                        <div class="ui four column grid aligned stackable">
+                        <div class="ui three column grid aligned stackable">
                             <form class="row" ng-submit="addProduct()">
                                 <div class="column">
                                     <div class="big ui search">
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="column">
                                     <div class="big ui fluid right labeled input">
-                                        <input type="number" min="1" placeholder="Cantidad..." ng-model="product.quantify" required>
+                                        <input type="number" min="1" placeholder="Cantidad..." id="quantify" ng-model="product.quantify" required>
                                         <div class="ui basic label">
                                             Unidades
                                         </div>
@@ -131,12 +131,13 @@
                         <table class="ui inverted table celled structured">
                             <thead>
                                 <tr>
-                                    <th class="center aligned">No</th>
-                                    <th class="center aligned">ID</th>
+                                    <th class="two wide center aligned">No</th>
+                                    <th class="one wide center aligned">ID</th>
                                     <th class="center aligned">Nombre</th>
-                                    <th class="center aligned">Precio</th>
-                                    <th class="center aligned">Cantidad</th>
-                                    <th class="center aligned">Subtotal</th>
+                                    <th class="two wide center aligned">Precio</th>
+                                    <th class="two wide center aligned">Cantidad</th>
+                                    <th class="two wide center aligned">Subtotal</th>
+                                    <th class="two wide center aligned">Remover</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -144,9 +145,15 @@
                                     <td>@{{order.id}}</td>
                                     <td>@{{order.idProduct}}</td>
                                     <td>@{{order.name}}</td>
-                                    <td>@{{order.price}}</td>
-                                    <td>@{{order.quantify}}</td>
-                                    <td>@{{order.subtotal}}</td>
+                                    <td>@{{order.price | number : 2}}</td>
+                                    <td>@{{order.quantify | number : 2}}</td>
+                                    <td>@{{order.subtotal | number : 2}}</td>
+                                    <td>
+                                        <button class="ui red tiny button">
+                                            <i class="minus icon"></i>
+                                            Remover
+                                        </button>
+                                    </td>
                                 </tr>
                             </tbody>
                             <tfoot>
@@ -162,7 +169,8 @@
                                 <th></th>
                                 <th></th>
                                 <th class="right aligned"><h2>Total:</h2></th>
-                                <th class="center aligned"><h2>@{{total}}</h2></th>
+                                <th class="center aligned"><h2>@{{total | number : 2}}</h2></th>
+                                <th></th>
                             </tr>
                             </tfoot>
                         </table>

@@ -31,13 +31,12 @@ app.controller('SalesController', function ($scope, $http) {
         minCharacters : 1,
         onSelect: function(product, response) {
             $scope.product = product;
+            $scope.product.quantify = parseInt($('#quantify').val());
             $scope.registeredProducts.push(product.name);
         }
     });
-
+    
     $scope.addProduct = function() {
-
-        console.log("Precio = " + $scope.product.price);
 
         if (!isNaN($scope.product.price)) {
 
@@ -59,14 +58,12 @@ app.controller('SalesController', function ($scope, $http) {
 
                 $scope.product = {};
 
-                console.log($scope.total);
-
             } else {
-                alert("Por favor introduzca un producto válido");
+                alert("Por favor introduzca un producto válido - Second");
             }
 
         } else {
-            alert("Por favor introduzca un producto válido");
+            alert("Por favor introduzca un producto válido - First");
         }
 
     };
