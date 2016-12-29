@@ -136,8 +136,9 @@
                                     <th class="center aligned">Nombre</th>
                                     <th class="two wide center aligned">Precio</th>
                                     <th class="two wide center aligned">Cantidad</th>
-                                    <th class="two wide center aligned">Subtotal</th>
                                     <th class="two wide center aligned">Remover</th>
+                                    <th class="two wide center aligned">Editar</th>
+                                    <th class="two wide center aligned">Subtotal</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -147,13 +148,19 @@
                                     <td>@{{order.name}}</td>
                                     <td>@{{order.price | number : 2}}</td>
                                     <td>@{{order.quantify | number : 2}}</td>
-                                    <td>@{{order.subtotal | number : 2}}</td>
-                                    <td>
+                                    <td class="center aligned">
                                         <button class="ui red tiny button">
                                             <i class="minus icon"></i>
                                             Remover
                                         </button>
                                     </td>
+                                    <td class="center aligned">
+                                        <button class="ui blue tiny button">
+                                            <i class="edit icon"></i>
+                                            Editar
+                                        </button>
+                                    </td>
+                                    <td class="center aligned">@{{order.subtotal | number : 2}}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
@@ -165,12 +172,14 @@
                                          'other': '@{{orders.length}} ordenes.'}">
                                     </ng-pluralize>
                                 </th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th colspan="5" class="center aligned">
+                                    <button class="ui green big button" style="width: 90%">
+                                        <i class="rocket icon"></i>
+                                        Finalizar venta!
+                                    </button>
+                                </th>
                                 <th class="right aligned"><h2>Total:</h2></th>
                                 <th class="center aligned"><h2>@{{total | number : 2}}</h2></th>
-                                <th></th>
                             </tr>
                             </tfoot>
                         </table>
