@@ -68,6 +68,10 @@ app.controller('SalesController', function ($scope, $http) {
 
     };
 
+    $scope.deleteOrder = function(index) {
+        $scope.orders.splice(index, 1);
+    };
+
     $scope.totalize = function() {
 
         $scope.total = 0;

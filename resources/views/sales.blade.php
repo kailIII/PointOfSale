@@ -149,7 +149,7 @@
                                     <td>@{{order.price | number : 2}}</td>
                                     <td>@{{order.quantify | number : 2}}</td>
                                     <td class="center aligned">
-                                        <button class="ui red tiny button">
+                                        <button class="ui red tiny button" ng-click="deleteOrder($index)">
                                             <i class="minus icon"></i>
                                             Remover
                                         </button>
