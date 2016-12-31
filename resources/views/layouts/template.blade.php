@@ -9,7 +9,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/template/main.css') }}">
 
     @yield('stylesheets')
-    @yield('js-before')
+
+    <script src="{{ asset('library/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('library/angular.min.js') }}"></script>
+    <script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
+    <script src="{{ asset('js/template/main.js') }}"></script>
+
+    @yield('javascript-before')
 
     <title>@yield('title')</title>
 
@@ -48,11 +54,6 @@
         </div>
 
         <!-- JavaScript -->
-        <script src="{{ asset('library/jquery-3.1.1.min.js') }}"></script>
-        <script src="{{ asset('library/angular.min.js') }}"></script>
-        <script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
-        <script src="{{ asset('js/template/main.js') }}"></script>
-
         @yield('javascript')
 
     </body>

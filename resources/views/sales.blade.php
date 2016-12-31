@@ -8,8 +8,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/sales/main.css') }}">
 @stop
 
-@section('javascript')
+@section('javascript-before')
     <script src="{{ asset('js/sales/sales.js') }}"></script>
+@stop
+
+@section('javascript')
 @stop
 
 @section('content')
@@ -95,12 +98,13 @@
                 <div class="row">
                     <div class="wide column">
                         <h1>Cuenta:</h1>
-                        <div class="ui three column grid aligned stackable">
-                            <form class="row" ng-submit="addProduct()">
+                        <div class="ui three column grid aligned stackable" id="gridAction">
+                            <form class="row" ng-submit="actionOrder()">
                                 <div class="column">
                                     <div class="big ui search">
                                         <div class="ui fluid icon input">
-                                            <input class="prompt" type="text" placeholder="Buscar producto..." id="product" name="word" ng-model="product.name" required>
+                                            <input class="prompt" type="text" placeholder="Buscar producto..."
+                                                   id="product" name="word" ng-model="product.name" ng-readonly="editing" required>
                                             <i class="search icon"></i>
                                         </div>
                                         <div class="results"></div>
@@ -108,16 +112,25 @@
                                 </div>
                                 <div class="column">
                                     <div class="big ui fluid right labeled input">
-                                        <input type="number" min="1" placeholder="Cantidad..." id="quantify" ng-model="product.quantify" required>
+                                        <input type="number" min="1" placeholder="Cantidad..." id="quantify"
+                                               ng-model="product.quantify"
+                                               ng-change="changing()"
+                                               required>
                                         <div class="ui basic label">
                                             Unidades
                                         </div>
                                     </div>
                                 </div>
                                 <div class="column">
-                                    <button type="submit" class="big ui fluid orange button">
+                                        <button type="submit" class="big ui fluid blue button">
+                                        <i class="check square icon"></i>
+                                        @{{action}}
+                                    </button>
+                                </div>
+                                <div class="column" ng-show="action === 'Editar'">
+                                    <button type="button" class="big ui fluid grey button" ng-click="cancel()">
                                         <i class="add circle icon"></i>
-                                        Agregar
+                                        Cancelar
                                     </button>
                                 </div>
                             </form>
@@ -155,7 +168,7 @@
                                         </button>
                                     </td>
                                     <td class="center aligned">
-                                        <button class="ui blue tiny button">
+                                        <button class="ui blue tiny button" ng-click="editOrder($index)">
                                             <i class="edit icon"></i>
                                             Editar
                                         </button>

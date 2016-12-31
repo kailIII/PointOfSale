@@ -35,41 +35,106 @@ app.controller('SalesController', function ($scope, $http) {
             $scope.registeredProducts.push(product.name);
         }
     });
+
+    $scope.action = "Agregar";
     
-    $scope.addProduct = function() {
+    $scope.actionOrder = function() {
 
-        if (!isNaN($scope.product.price)) {
+        if ($scope.action === "Agregar") {
 
-            if ($scope.registeredProducts.indexOf($scope.product.name) > -1) {
+            if (!isNaN($scope.product.price)) {
 
-                var order = {
-                    id: ($scope.counter + 1),
-                    idProduct: $scope.product.id,
-                    name : $scope.product.name,
-                    price : $scope.product.price,
-                    quantify : $scope.product.quantify,
-                    subtotal: $scope.product.price * $scope.product.quantify
-                };
+                if ($scope.registeredProducts.indexOf($scope.product.name) > -1) {
 
-                $scope.orders.push(order);
-                $scope.totalize();
+                    var order = {
+                        id: ($scope.counter + 1),
+                        idProduct: $scope.product.id,
+                        name : $scope.product.name,
+                        price : $scope.product.price,
+                        quantify : $scope.product.quantify,
+                        subtotal: $scope.product.price * $scope.product.quantify
+                    };
 
-                $scope.counter = $scope.orders.length;
+                    $scope.orders.push(order);
+                    $scope.totalize();
 
-                $scope.product = {};
+                    $scope.counter = $scope.orders.length;
+
+                    $scope.product = {};
+
+                } else {
+                    alert("Por favor introduzca un producto válido - Second");
+                }
 
             } else {
-                alert("Por favor introduzca un producto válido - Second");
+                alert("Por favor introduzca un producto válido - First");
             }
 
         } else {
-            alert("Por favor introduzca un producto válido - First");
+
+            if ($scope.action === "Editar") {
+
+                $scope.product.subtotal = $scope.product.quantify * $scope.product.price;
+
+                $scope.totalize();
+
+                $scope.revert();
+
+            }
+
         }
 
     };
 
     $scope.deleteOrder = function(index) {
         $scope.orders.splice(index, 1);
+        $scope.totalize();
+    };
+
+    $scope.editing = false;
+
+    $scope.auxProduct = {};
+
+    $scope.editOrder = function(index) {
+
+        $scope.product = $scope.orders[index];
+
+        $scope.auxProduct = JSON.parse(JSON.stringify($scope.orders[index]));;
+
+        $scope.action = "Editar";
+
+        $scope.editing = true;
+
+        $('#gridAction').removeClass('three column grid');
+        $('#gridAction').addClass('four column grid');
+
+    };
+
+    $scope.changing = function() {
+
+        console.log($scope.product);
+        console.log($scope.auxProduct);
+
+    }
+
+    $scope.cancel = function() {
+
+        $scope.product.quantify = $scope.auxProduct.quantify;
+
+        $scope.revert();
+
+    };
+
+    $scope.revert = function() {
+
+        $scope.editing = false;
+
+        $scope.product = {};
+        $scope.action = "Agregar";
+
+        $('#gridAction').removeClass('four column grid');
+        $('#gridAction').addClass('three column grid');
+
     };
 
     $scope.totalize = function() {
@@ -81,6 +146,5 @@ app.controller('SalesController', function ($scope, $http) {
         });
 
     };
-
 
 });
