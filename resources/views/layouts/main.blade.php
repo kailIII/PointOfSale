@@ -22,6 +22,32 @@
 </head>
     <body>
 
+        <div class="ui inverted vertical masthead center aligned segment">
+            <div class="ui container">
+                <div class="ui large secondary inverted pointing menu">
+                    <a class="toc item">
+                        <i class="sidebar icon"></i>
+                    </a>
+                    <a class="active item">Home</a>
+                    <a class="item">Nosotros</a>
+                    <a class="item">Productos</a>
+                    <div class="right item">
+                        <a class="ui inverted button">Iniciar sesión</a>
+                    </div>
+                </div>
+            </div>
+
+            @yield('inside-header')
+
+        </div>
+
+        <div class="ui vertical inverted sidebar menu left">
+            <a class="active item">Home</a>
+            <a class="item">Nosotros</a>
+            <a class="item">Productos</a>
+            <a class="item">Iniciar sesión</a>
+        </div>
+
         @yield('content')
 
         <div class="ui inverted vertical footer segment">

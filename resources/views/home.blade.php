@@ -1,8 +1,6 @@
-@extends('layouts.template')
+@extends('layouts.main')
 
-@section('title')
-    Kaizen - Punto de venta
-@stop
+@section('title', 'Kaizen Sales - Punto de venta')
 
 @section('stylesheets')
 @stop
@@ -12,53 +10,17 @@
 
 @section('content')
 
-    <div class="ui large top fixed menu transition hidden">
-        <div class="ui container">
-            <a class="active item">Home</a>
-            <a class="item">Nosotros</a>
-            <a class="item">Productos</a>
-            <div class="right menu">
-                <div class="item">
-                    <a class="ui button">Iniciar sesión</a>
-                </div>
-            </div>
+    @section('inside-header')
+        <div class="ui text container">
+            <h1 class="ui inverted header">
+                Kaizen Sales
+            </h1>
+            <h2>Tu punto de venta, estés donde estés.</h2>
+            <a href="/sales"><div class="ui huge primary button">Empieza ya!<i class="right arrow icon"></i></div></a>
         </div>
-    </div>
-
-    <div class="ui vertical inverted sidebar menu left">
-        <a class="active item">Home</a>
-        <a class="item">Nosotros</a>
-        <a class="item">Productos</a>
-        <a class="item">Iniciar sesión</a>
-    </div>
+    @stop
 
     <div class="pusher">
-        <div class="ui inverted vertical masthead center aligned segment">
-
-            <div class="ui container">
-                <div class="ui large secondary inverted pointing menu">
-                    <a class="toc item">
-                        <i class="sidebar icon"></i>
-                    </a>
-                    <a class="active item">Home</a>
-                    <a class="item">Nosotros</a>
-                    <a class="item">Productos</a>
-                    <div class="right item">
-                        <a class="ui inverted button">Iniciar sesión</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ui text container">
-                <h1 class="ui inverted header">
-                    Kaizen Sales
-                </h1>
-                <h2>Tu punto de venta, estés donde estés.</h2>
-                <a href="/sales"><div class="ui huge primary button">Empieza ya!<i class="right arrow icon"></i></div></a>
-            </div>
-
-        </div>
-
         <div class="ui vertical stripe segment">
             <div class="ui middle aligned stackable grid container">
                 <div class="row">

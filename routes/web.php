@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::get('/search/products/{word}', 'SearchController@autocomplete');
 
 Route::resource('sales', 'SalesController');
+Route::resource('products', 'ProductsController');

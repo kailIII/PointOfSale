@@ -1,15 +1,13 @@
-@extends('layouts.template')
+@extends('layouts.all')
 
-@section('title')
-    Kaizen - Punto de venta
-@stop
+@section('title', 'Ventas - Kaizen Sales')
 
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/sales/main.css') }}">
 @stop
 
 @section('javascript-before')
-    <script src="{{ asset('js/sales/sales.js') }}"></script>
+    <script src="{{ asset('js/sales/main.js') }}"></script>
 @stop
 
 @section('javascript')
@@ -17,54 +15,7 @@
 
 @section('content')
 
-    <div class="ui large top fixed menu transition hidden">
-        <div class="ui container">
-            <a class="active item">Inicio</a>
-            <a class="item">Nosotros</a>
-            <a class="item">Productos</a>
-            <div class="right menu">
-                <div class="item">
-                    <a class="ui button">Iniciar sesión</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="ui vertical inverted sidebar menu left">
-        <a class="active item">Inicio</a>
-        <a class="item">Nosotros</a>
-        <a class="item">Productos</a>
-        <a class="item">Iniciar sesión</a>
-    </div>
-
     <div class="pusher" ng-app="salesApp" ng-controller="SalesController">
-        <div class="ui fixed inverted menu">
-            <div class="ui container">
-                <a href="#" class="header item">
-                    <img class="logo" src="{{asset('img/logo.png')}}">
-                    Kaizen Sales
-                </a>
-                <a href="/" class="item">Inicio</a>
-                <div class="ui dropdown item">
-                    Herramientas <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <a class="item" href="#">Link Item</a>
-                        <a class="item" href="#">Link Item</a>
-                        <div class="divider"></div>
-                        <div class="header">Header Item</div>
-                        <div class="item">
-                            <i class="dropdown icon"></i>
-                            Sub Menu
-                            <div class="menu">
-                                <a class="item" href="#">Link Item</a>
-                                <a class="item" href="#">Link Item</a>
-                            </div>
-                        </div>
-                        <a class="item" href="#">Link Item</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="ui vertical stripe segment">
             <h1 class="ui header container">Bienvenido {{$userName}}!</h1>
