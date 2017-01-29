@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.28 on 2016-12-17.
+ * Generated for Laravel 5.3.28 on 2017-01-04.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1143,7 +1143,7 @@ namespace {
          */
         public static function handle($input, $output = null){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            return \App\Console\Kernel::handle($input, $output);
+            return \KaizenSales\Console\Kernel::handle($input, $output);
         }
         
         /**
@@ -1156,7 +1156,7 @@ namespace {
          */
         public static function terminate($input, $status){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            \App\Console\Kernel::terminate($input, $status);
+            \KaizenSales\Console\Kernel::terminate($input, $status);
         }
         
         /**
@@ -1169,7 +1169,7 @@ namespace {
          */
         public static function command($signature, $callback){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            return \App\Console\Kernel::command($signature, $callback);
+            return \KaizenSales\Console\Kernel::command($signature, $callback);
         }
         
         /**
@@ -1181,7 +1181,7 @@ namespace {
          */
         public static function registerCommand($command){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            \App\Console\Kernel::registerCommand($command);
+            \KaizenSales\Console\Kernel::registerCommand($command);
         }
         
         /**
@@ -1194,7 +1194,7 @@ namespace {
          */
         public static function call($command, $parameters = array()){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            return \App\Console\Kernel::call($command, $parameters);
+            return \KaizenSales\Console\Kernel::call($command, $parameters);
         }
         
         /**
@@ -1207,7 +1207,7 @@ namespace {
          */
         public static function queue($command, $parameters = array()){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            \App\Console\Kernel::queue($command, $parameters);
+            \KaizenSales\Console\Kernel::queue($command, $parameters);
         }
         
         /**
@@ -1218,7 +1218,7 @@ namespace {
          */
         public static function all(){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            return \App\Console\Kernel::all();
+            return \KaizenSales\Console\Kernel::all();
         }
         
         /**
@@ -1229,7 +1229,7 @@ namespace {
          */
         public static function output(){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            return \App\Console\Kernel::output();
+            return \KaizenSales\Console\Kernel::output();
         }
         
         /**
@@ -1240,7 +1240,7 @@ namespace {
          */
         public static function bootstrap(){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            \App\Console\Kernel::bootstrap();
+            \KaizenSales\Console\Kernel::bootstrap();
         }
         
         /**
@@ -1252,7 +1252,7 @@ namespace {
          */
         public static function setArtisan($artisan){
             //Method inherited from \Illuminate\Foundation\Console\Kernel            
-            \App\Console\Kernel::setArtisan($artisan);
+            \KaizenSales\Console\Kernel::setArtisan($artisan);
         }
         
     }
@@ -1399,7 +1399,7 @@ namespace {
         /**
          * Get the currently authenticated user.
          *
-         * @return \App\User|null 
+         * @return \KaizenSales\User|null 
          * @static 
          */
         public static function user(){
@@ -1503,7 +1503,7 @@ namespace {
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \App\User|false 
+         * @return \KaizenSales\User|false 
          * @static 
          */
         public static function loginUsingId($id, $remember = false){
@@ -1514,7 +1514,7 @@ namespace {
          * Log the given user ID into the application without sessions or cookies.
          *
          * @param mixed $id
-         * @return \App\User|false 
+         * @return \KaizenSales\User|false 
          * @static 
          */
         public static function onceUsingId($id){
@@ -1608,7 +1608,7 @@ namespace {
         /**
          * Return the currently cached user.
          *
-         * @return \App\User|null 
+         * @return \KaizenSales\User|null 
          * @static 
          */
         public static function getUser(){
@@ -1650,7 +1650,7 @@ namespace {
         /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \App\User 
+         * @return \KaizenSales\User 
          * @static 
          */
         public static function getLastAttempted(){
@@ -1710,7 +1710,7 @@ namespace {
         /**
          * Determine if the current user is authenticated.
          *
-         * @return \App\User 
+         * @return \KaizenSales\User 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */
@@ -7190,7 +7190,7 @@ namespace {
     class Redirect extends \Illuminate\Support\Facades\Redirect{
         
         /**
-         * Create a new redirect response to the "template" route.
+         * Create a new redirect response to the "home" route.
          *
          * @param int $status
          * @return \Illuminate\Http\RedirectResponse 

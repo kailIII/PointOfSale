@@ -1,7 +1,22 @@
 
-var app = angular.module('salesApp', []);
+angular.module('SaleService', [])
+    .factory('Sale', function($http) {
+        return {
+            save: function (total) {
+                return $http({
+                    method: 'POST',
+                    url: '/sales',
+                    data: {
+                        total: total
+                    } // {}
+                });
+            }
+        }
+    });
 
-app.controller('SalesController', function ($scope, $http) {
+var app = angular.module('salesApp', ['SaleService']);
+
+app.controller('SalesController', function ($scope, Sale) {
 
     $scope.orders = [];
     $scope.registeredProducts = [];
@@ -35,6 +50,26 @@ app.controller('SalesController', function ($scope, $http) {
             $scope.registeredProducts.push(product.name);
         }
     });
+
+    $scope.saveSale = function() {
+
+        if ($scope.orders.length != 0) {
+
+            console.log('Guardando la venta');
+
+            Sale.save($scope.total).then(function(data) {
+
+                console.log(data);
+
+            });
+
+        } else {
+
+            alert('Aún no hay nada añadido');
+
+        }
+
+    };
 
     $scope.action = "Agregar";
     
@@ -112,8 +147,8 @@ app.controller('SalesController', function ($scope, $http) {
 
     $scope.changing = function() {
 
-        console.log($scope.product);
-        console.log($scope.auxProduct);
+        //console.log($scope.product);
+        //console.log($scope.auxProduct);
 
     }
 

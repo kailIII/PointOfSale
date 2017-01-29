@@ -67,7 +67,7 @@
         </div>
 
         <div class="ui vertical stripe segment">
-            <h1 class="ui header container">Bienvenido Arturo Cordero!</h1>
+            <h1 class="ui header container">Bienvenido {{$userName}}!</h1>
             <div class="ui middle aligned piled segment stackable grid container ">
                 <div class="row">
                     <div class="eight wide column">
@@ -137,9 +137,7 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
-
                     <div class="wide column">
                         <table class="ui inverted table celled structured">
                             <thead>
@@ -186,7 +184,7 @@
                                     </ng-pluralize>
                                 </th>
                                 <th colspan="5" class="center aligned">
-                                    <button class="ui green big button" style="width: 90%">
+                                    <button ng-click="saveSale()" class="ui green big button" style="width: 90%">
                                         <i class="rocket icon"></i>
                                         Finalizar venta!
                                     </button>

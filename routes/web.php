@@ -17,6 +17,4 @@ Route::get('/', function () {
 
 Route::get('/search/products/{word}', 'SearchController@autocomplete');
 
-Route::get('/sales', function () {
-    return view('sales');
-});
+Route::resource('sales', 'SalesController');
